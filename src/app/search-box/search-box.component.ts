@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, EventEmitter, OnInit, Output } from '@angular/core';
 import { GitReposService } from '../git-repos.service';
 
 @Component({
@@ -8,8 +8,8 @@ import { GitReposService } from '../git-repos.service';
 })
 export class SearchBoxComponent implements OnInit {
 
+  @Output() repoData = new EventEmitter<any>();
   searchName: string = "";
-  repoData: any;
 
   constructor(private gitReposService: GitReposService) { }
 
@@ -19,7 +19,7 @@ export class SearchBoxComponent implements OnInit {
 
   searchByName() {
     this.gitReposService.getReposUrl(this.searchName).subscribe((data: any) => {
-      this.repoData = data.map((item: any) => {
+      let result = data.map((item: any) => {
         const obj = {
           repoName: item.name,
           userName: item.owner.login,
@@ -28,7 +28,7 @@ export class SearchBoxComponent implements OnInit {
         };
         return obj;
       });
-      console.log(this.repoData)
+        this.repoData.emit(result)
     });
   }
 

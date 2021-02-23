@@ -1,12 +1,14 @@
-<section>
+
+
+<section *ngFor="let d of data">
     <div>
-        RepoName:
+        RepoName:{{d.repoName}}
     </div><div>
-        UserName:
+        UserName:{{d.userName}}
     </div><div>
-        UserImage:
+        UserImage:{{d.imgUrl}}
     </div>
     <div>
-        OpenIssues:
+        OpenIssues:{{d.openIssue}}
     </div>
 </section>
