@@ -13,9 +13,10 @@ export class RepoDetailsComponent implements OnInit {
   details: any = {
     name: '',
     owner: {
-      login: ''
+      login: '',
+      avatar_url: ''
     },
-    pushed_at: ''
+    pushed_at: '',
   };
   constructor(private router: Router, private activateRoute: ActivatedRoute, private gitRepoService: GitReposService) { }
 
