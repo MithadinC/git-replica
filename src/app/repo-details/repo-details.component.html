@@ -1,8 +1,6 @@
-
 <div class="border">
-    <button class="btn btn-dark">Back</button>
-    <h4>Repo Name :</h4><br/>
-    <h4>User Name :</h4><br/>
-    <h4>Push Time :</h4><br/>
-    <h4>Issue Count :</h4>
+    <button class="btn btn-dark" (click)="backToList()">Back</button>
+    <h4>Repo Name : {{details.name}}</h4><br />
+    <h4>User Name : {{details.owner.login}}</h4><br />
+    <h4>Push Time : {{details.pushed_at}}</h4><br />
 </div>

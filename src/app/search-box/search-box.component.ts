@@ -1,4 +1,5 @@
 import { Component, EventEmitter, OnInit, Output } from '@angular/core';
+import { Router } from '@angular/router';
 import { GitReposService } from '../git-repos.service';
 
 @Component({
@@ -8,29 +9,35 @@ import { GitReposService } from '../git-repos.service';
 })
 export class SearchBoxComponent implements OnInit {
 
-  @Output() repoData = new EventEmitter<any>();
+  // @Output() repoData = new EventEmitter<any>();
   searchName: string = "";
 
-  constructor(private gitReposService: GitReposService) { }
+  constructor(
+    private router: Router
+    // private gitReposService: GitReposService
+  ) { }
 
   ngOnInit(): void {
 
   }
-
   searchByName() {
-    this.gitReposService.getReposUrl(this.searchName).subscribe((data: any) => {
-      let result = data.map((item: any) => {
-        const obj = {
-          repoName: item.name,
-          userName: item.owner.login,
-          openIssue: item.open_issues_count,
-          imgUrl: item.owner.avatar_url
-        };
-        return obj;
-      });
-        this.repoData.emit(result)
-    });
+    this.router.navigate(['cardshow', this.searchName]);
   }
+
+  // searchByName() {
+  //   this.gitReposService.getReposUrl(this.searchName).subscribe((data: any) => {
+  //     let result = data.map((item: any) => {
+  //       const obj = {
+  //         repoName: item.name,
+  //         userName: item.owner.login,
+  //         openIssue: item.open_issues_count,
+  //         imgUrl: item.owner.avatar_url
+  //       };
+  //       return obj;
+  //     });
+  //       this.repoData.emit(result)
+  //   });
+  // }
 
 
 }

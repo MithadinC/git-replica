@@ -2,12 +2,16 @@ import { HttpClient } from "@angular/common/http";
 import { Injectable } from "@angular/core";
 
 @Injectable({
-  providedIn:'root'
+  providedIn: 'root'
 })
 export class GitReposService {
-  constructor(private http: HttpClient) {}
-  getReposUrl(value:string) {
+  constructor(private http: HttpClient) { }
+  getReposUrl(value: string) {
     return this.http.get(`https://api.github.com/users/${value}/repos`)
+  }
+
+  getRepoDetails(userName: string, repoName: string) {
+    return this.http.get(`https://api.github.com/repos/${userName}/${repoName}`)
   }
 
 }

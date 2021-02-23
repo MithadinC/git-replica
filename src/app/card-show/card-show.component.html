@@ -1,11 +1,10 @@
-
 <section class="card-container">
-    <div  *ngFor="let d of data" class="card">
+    <div *ngFor="let d of data" class="card" (click)="goToDetails(d)">
         <img src="{{d.imgUrl}}" alt="Avatar" style="width: 100%;">
         <div class="container">
-          <h4><b>{{d.repoName}}</b></h4> 
-          <p>{{d.userName}}</p> 
-          <p>{{d.openIssue}}</p> 
+            <h4><b>{{d.repoName}}</b></h4>
+            <p>{{d.userName}}</p>
+            <p>{{d.openIssue}}</p>
         </div>
-      </div>
+    </div>
 </section>
