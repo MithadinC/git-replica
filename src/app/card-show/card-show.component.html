@@ -1,14 +1,11 @@
 
-
-<section *ngFor="let d of data">
-    <div>
-        RepoName:{{d.repoName}}
-    </div><div>
-        UserName:{{d.userName}}
-    </div><div>
-        UserImage:{{d.imgUrl}}
-    </div>
-    <div>
-        OpenIssues:{{d.openIssue}}
-    </div>
+<section class="card-container">
+    <div  *ngFor="let d of data" class="card">
+        <img src="{{d.imgUrl}}" alt="Avatar" style="width: 100%;">
+        <div class="container">
+          <h4><b>{{d.repoName}}</b></h4> 
+          <p>{{d.userName}}</p> 
+          <p>{{d.openIssue}}</p> 
+        </div>
+      </div>
 </section>
